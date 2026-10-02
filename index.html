@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f6f1">
+  <meta name="description" content="A calmer space to plan your day.">
+  <title>Flowstate â€” Make room for what matters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="mark"><i></i><i></i><i></i></span>flowstate<span class="green">.</span></a>
+      <div class="label">WORKSPACE</div>
+      <nav>
+        <button class="nav active" data-view="today"><span>â—·</span>Today <small id="todayCount">0</small></button>
+        <button class="nav" data-view="upcoming"><span>â–¦</span>Upcoming</button>
+        <button class="nav" data-view="all"><span>â˜·</span>All tasks <small id="allCount">0</small></button>
+      </nav>
+      <div class="rule"></div><div class="label">YOUR LISTS</div>
+      <nav>
+        <button class="nav" data-list="Personal"><b class="dot purple"></b>Personal</button>
+        <button class="nav" data-list="Work"><b class="dot blue"></b>Work</button>
+        <button class="nav" data-list="Ideas"><b class="dot orange"></b>Ideas</button>
+      </nav>
+      <div class="side-bottom">
+        <div class="encourage"><span class="spark">âœ³</span><strong>A little progress<br>goes a long way.</strong><p>Keep showing up. It adds up.</p><div class="thin"><i></i></div></div>
+        <div class="user"><span class="avatar">L</span><span><strong>Lawal</strong><small>Free workspace</small></span><span class="more">Â·Â·Â·</span></div>
+      </div>
+    </aside>
+    <main>
+      <header><div class="crumb">Workspace <span>/</span> <strong id="crumb">Today</strong></div><div class="head-actions"><button id="searchBtn" aria-label="Search">âŒ•</button><button id="themeBtn" aria-label="Toggle theme">â˜¼</button><span class="avatar tiny">L</span></div></header>
+      <div class="content">
+        <div class="date"><span class="green">âœ³</span><span id="date"></span><i></i><small><b></b> YOUR DAILY SPACE</small></div>
+        <div class="hero"><div><label>A FRESH START</label><h1 id="greeting">Good evening, Lawal<span class="green">.</span></h1><p id="sub">A clear mind starts with a clear plan.</p></div><button class="primary" id="add"><span>ï¼‹</span> New task <kbd>N</kbd></button></div>
+        <div class="stats">
+          <article class="progress"><div class="cap">DAILY PROGRESS <span>â†—</span></div><div class="progress-inner"><div class="ring"><svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="42"/><circle class="value" id="ring" cx="50" cy="50" r="42"/></svg><div><strong id="percent">0%</strong><small>done</small></div></div><div><strong id="progressTitle">You're just getting started</strong><small id="progressSub">Every task is a step forward.</small></div></div></article>
+          <article><div class="cap">ON YOUR PLATE <span>â–¤</span></div><strong class="number" id="open">0</strong><small class="stat-sub">Tasks to focus on</small><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article><div class="cap">COMPLETED <span class="purple-text">âœ“</span></div><strong class="number" id="done">0</strong><small class="stat-sub">Little wins, collected</small><span class="big-spark">âœ³</span></article>
+        </div>
+        <section>
+          <div class="section-head"><div><h2 id="heading">Today's focus <small id="count">0</small></h2><p id="hint">Make space for what matters most.</p></div><div class="tools"><div class="search" id="search"><span>âŒ•</span><input id="query" placeholder="Search tasks..." type="search"><button id="closeSearch" aria-label="Close search">Ã—</button></div><button class="filter" id="filterBtn">â˜· <span>Filter</span>âŒ„</button></div></div>
+          <div class="filters" id="filters" hidden><span>SHOW</span><button class="chosen" data-filter="all">All</button><button data-filter="active">Active</button><button data-filter="completed">Completed</button><i></i><span>PRIORITY</span><button data-priority="high">High</button><button data-priority="medium">Medium</button><button data-priority="low">Low</button></div>
+          <div id="tasks" class="tasks"></div>
+          <div class="empty" id="empty" hidden><div class="empty-art"><span>âœ³</span><b>âœ“</b></div><h3>A little room to breathe.</h3><p>Nothing on your list just yet. Add a task and make it yours.</p><button id="emptyAdd">Create your first task â†—</button></div>
+          <div class="list-footer"><span><b></b> Changes save automatically</span><button id="clear">Clear completed â†—</button></div>
+        </section>
+      </div>
+      <footer><span>Made for your momentum.</span><span>Take it one thing at a time <b>âœ³</b></span></footer>
+    </main>
+  </div>
+  <dialog id="modal"><form id="form"><div class="modal-head"><div><small>MAKE IT HAPPEN</small><h2 id="modalTitle">A new task<span>.</span></h2></div><button type="button" id="close" class="x" aria-label="Close">Ã—</button></div><label for="title">What needs doing?</label><input id="title" maxlength="120" required placeholder="e.g. Finish the project proposal"><label for="notes">A little detail <small>OPTIONAL</small></label><textarea id="notes" rows="2" placeholder="Add a note to future you..."></textarea><div class="fields"><div><label for="list">List</label><select id="list"><option>Personal</option><option>Work</option><option>Ideas</option></select></div><div><label for="priority">Priority</label><select id="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div></div><label for="due">Due date <small>OPTIONAL</small></label><input type="date" id="due"><div class="modal-actions"><button type="button" class="cancel" id="cancel">Cancel</button><button class="primary" type="submit"><span id="submit">Add task</span> â†—</button></div></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
