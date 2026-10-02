@@ -1,0 +1,19 @@
+{
+  "name": "lawal-flowstate-todo",
+  "version": "1.0.0",
+  "description": "A thoughtfully animated, responsive task manager designed to make planning feel lighter.",
+  "main": "app.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "http-server": "^14.1.1"
+  }
+}
+
